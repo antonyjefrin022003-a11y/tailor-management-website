@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx vite *)",
+      "Bash(npm run *)",
+      "Bash(Start-Sleep -Seconds 5)",
+      "Bash(Get-Content \"C:\\\\Users\\\\ANTONY~1.JEF\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-antony-jefrin-Downloads-tailor-task-track-main\\\\ad0a43de-690f-46d4-a493-fbe116fa8274\\\\tasks\\\\bt5b1rink.output\" -ErrorAction SilentlyContinue)",
+      "Bash(nohup npm *)",
+      "Bash(echo \"PID: $!\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:5173/)"
+    ]
+  }
+}
