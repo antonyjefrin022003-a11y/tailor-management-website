@@ -78,7 +78,7 @@ export const taskService = {
       .order('created_at', { ascending: false });
     
     if (error) throw error;
-    return data?.map(this.mapFromDatabase) || [];
+    return data?.map((t) => this.mapFromDatabase(t)) || [];
   },
 
   async create(task: Omit<Task, 'id'>) {

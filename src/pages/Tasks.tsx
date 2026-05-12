@@ -14,7 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, CheckCircle, AlertCircle, Plus, Loader2 } from "lucide-react";
+import { Calendar, CheckCircle, AlertCircle, Plus, Loader2, Pencil } from "lucide-react";
 import TaskForm from "@/components/TaskForm";
 import { Task } from "@/models/types";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -54,6 +54,11 @@ const Tasks: React.FC = () => {
 
   const handleAddTask = () => {
     setSelectedTask(null);
+    setIsTaskDialogOpen(true);
+  };
+
+  const handleEditTask = (task: Task) => {
+    setSelectedTask(task);
     setIsTaskDialogOpen(true);
   };
 
@@ -176,9 +181,17 @@ const Tasks: React.FC = () => {
                   )}
                   
                   <div className="pt-2 flex justify-end space-x-2">
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => handleEditTask(task)}
+                    >
+                      <Pencil className="mr-2 h-3 w-3" />
+                      Edit
+                    </Button>
                     {!task.isPaid ? (
-                      <Button 
-                        size="sm" 
+                      <Button
+                        size="sm"
                         className="bg-green-600 hover:bg-green-700"
                         onClick={() => handleMarkAsPaid(task)}
                       >
@@ -186,8 +199,8 @@ const Tasks: React.FC = () => {
                         Mark as Paid
                       </Button>
                     ) : (
-                      <Button 
-                        size="sm" 
+                      <Button
+                        size="sm"
                         variant="outline"
                         onClick={() => handleMarkAsPending(task)}
                       >
@@ -206,9 +219,15 @@ const Tasks: React.FC = () => {
       <Dialog open={isTaskDialogOpen} onOpenChange={setIsTaskDialogOpen}>
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
-            <DialogTitle>Add New Task</DialogTitle>
+            <DialogTitle>{selectedTask ? "Edit Task" : "Add New Task"}</DialogTitle>
           </DialogHeader>
-          <TaskForm onClose={() => setIsTaskDialogOpen(false)} />
+          <TaskForm
+            task={selectedTask ?? undefined}
+            onClose={() => {
+              setIsTaskDialogOpen(false);
+              setSelectedTask(null);
+            }}
+          />
         </DialogContent>
       </Dialog>
     </div>

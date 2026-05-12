@@ -64,8 +64,8 @@ const Payments: React.FC = () => {
       return total + (task.piecesCompleted * pieceRate);
     }, 0);
 
-  const handleMarkAsPaid = (taskId: string) => {
-    updatePaymentStatus(taskId, true, new Date().toISOString().split('T')[0]);
+  const handleMarkAsPaid = async (taskId: string) => {
+    await updatePaymentStatus(taskId, true, new Date().toISOString().split('T')[0]);
   };
 
   return (
