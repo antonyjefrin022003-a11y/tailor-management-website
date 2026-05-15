@@ -4,7 +4,7 @@ export interface Task {
   employeeId: string;
   date: string;
   piecesCompleted: number;
-  pieceRate: number; // Moved from Employee to Task
+  pieceRate: number;
   description?: string;
   isPaid: boolean;
   paymentDate?: string;
@@ -16,7 +16,14 @@ export interface Employee {
   phoneNumber: string;
   address: string;
   joinDate: string;
-  // Removed pieceRate from here
+  // Optional profile & bank details
+  profilePhoto?: string;
+  bankAccountNumber?: string;
+  bankName?: string;
+  ifscCode?: string;
+  branchName?: string;
+  upiId?: string;
+  qrCodePhoto?: string;
 }
 
 export interface EmployeeSummary {

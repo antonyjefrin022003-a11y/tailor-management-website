@@ -24,11 +24,18 @@ export const employeeService = {
         name: employee.name,
         phone_number: employee.phoneNumber,
         address: employee.address,
-        join_date: employee.joinDate
+        join_date: employee.joinDate,
+        profile_photo: employee.profilePhoto || null,
+        bank_account_number: employee.bankAccountNumber || null,
+        bank_name: employee.bankName || null,
+        ifsc_code: employee.ifscCode || null,
+        branch_name: employee.branchName || null,
+        upi_id: employee.upiId || null,
+        qr_code_photo: employee.qrCodePhoto || null,
       }])
       .select()
       .single();
-    
+
     if (error) throw error;
     return this.mapFromDatabase(data);
   },
@@ -40,12 +47,19 @@ export const employeeService = {
         name: employee.name,
         phone_number: employee.phoneNumber,
         address: employee.address,
-        join_date: employee.joinDate
+        join_date: employee.joinDate,
+        profile_photo: employee.profilePhoto || null,
+        bank_account_number: employee.bankAccountNumber || null,
+        bank_name: employee.bankName || null,
+        ifsc_code: employee.ifscCode || null,
+        branch_name: employee.branchName || null,
+        upi_id: employee.upiId || null,
+        qr_code_photo: employee.qrCodePhoto || null,
       })
       .eq('id', employee.id)
       .select()
       .single();
-    
+
     if (error) throw error;
     return this.mapFromDatabase(data);
   },
@@ -65,7 +79,14 @@ export const employeeService = {
       name: dbEmployee.name,
       phoneNumber: dbEmployee.phone_number,
       address: dbEmployee.address,
-      joinDate: dbEmployee.join_date
+      joinDate: dbEmployee.join_date,
+      profilePhoto: dbEmployee.profile_photo || undefined,
+      bankAccountNumber: dbEmployee.bank_account_number || undefined,
+      bankName: dbEmployee.bank_name || undefined,
+      ifscCode: dbEmployee.ifsc_code || undefined,
+      branchName: dbEmployee.branch_name || undefined,
+      upiId: dbEmployee.upi_id || undefined,
+      qrCodePhoto: dbEmployee.qr_code_photo || undefined,
     };
   }
 };
